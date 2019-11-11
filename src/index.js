@@ -1,12 +1,15 @@
 import React from 'react';
 import './config/ReactotronConfig';
-import { View, Text } from 'react-native';
+import { StatusBar } from 'react-native';
+import LoginNav from './routes/LoginNav';
+import { colors } from './styles/mainStyles';
 
 const App: () => React$Node = () => {
   return (
-    <View>
-      <Text>Lop Mobile</Text>
-    </View>
+    <>
+      <StatusBar backgroundColor={colors.prim1} />
+      <LoginNav />
+    </>
   );
 };
 
