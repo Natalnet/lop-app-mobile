@@ -27,7 +27,7 @@ export default class Login extends Component {
 
   handleEntrar = () => {
     const { navigation } = this.props;
-    navigation.navigate('Home');
+    navigation.navigate('Home', { name: 'Fulano da Silva Sauro' });
   };
 
   handleEsqueceuSenha = () => {
