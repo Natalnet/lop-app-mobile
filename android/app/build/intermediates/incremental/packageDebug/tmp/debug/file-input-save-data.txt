@@ -1,5 +1,5 @@
 #Internal package file, do not edit.
-#Mon Nov 25 11:51:33 BRT 2019
+#Mon Nov 25 14:15:07 BRT 2019
 60.set=ASSET
 52.set=ASSET
 53.base=/home/lara/reps/lop/lop-app-mobile/android/app/build/intermediates/transforms/mergeJniLibs/debug/0

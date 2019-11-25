@@ -9,8 +9,14 @@ import {
   Footer,
   ButtonsView,
   Btn,
-  BtnText
+  BtnText,
+  styles
 } from "./styles";
+
+import { Button, Icon } from "react-native-ui-kitten";
+
+export const CadastroIcon = style => <Icon name="person-add" {...style} />;
+export const EntrarIcon = style => <Icon name="person-done" {...style} />;
 
 export default class Intro extends Component {
   static navigationOptions = {
@@ -38,11 +44,19 @@ export default class Intro extends Component {
         </Header>
         <Footer>
           <ButtonsView>
-            <Btn onPress={this.handleCadastro}>
-              <BtnText>Cadastro</BtnText>
+            <Btn
+              icon={CadastroIcon}
+              onPress={this.handleCadastro}
+              textStyle={styles.BtnText}
+            >
+              Cadastro
             </Btn>
-            <Btn onPress={this.handleLogin}>
-              <BtnText>Entrar</BtnText>
+            <Btn
+              icon={EntrarIcon}
+              onPress={this.handleLogin}
+              textStyle={styles.BtnText}
+            >
+              Entrar
             </Btn>
           </ButtonsView>
         </Footer>

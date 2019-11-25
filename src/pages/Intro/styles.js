@@ -1,5 +1,8 @@
-import styled from 'styled-components/native';
-import { colors } from '../../styles/mainStyles';
+import styled from "styled-components/native";
+import { StyleSheet } from "react-native";
+import { colors } from "../../styles/mainStyles";
+
+import { Button } from "react-native-ui-kitten";
 
 export const Container = styled.View`
   flex: 1;
@@ -28,19 +31,24 @@ export const Footer = styled.View`
   justify-content: flex-end;
 `;
 export const ButtonsView = styled.View`
-  margin-bottom: 70px;
   flex-direction: row;
   justify-content: space-between;
-  margin: 70px 20px;
+  margin: 70px 30px;
 `;
-export const Btn = styled.TouchableOpacity`
-  border-width: 3px;
-  border-color: ${colors.prim1};
-  padding: 5px 20px;
+export const Btn = styled(Button)`
+  border: none;
+  background-color: ${colors.prim1};
+  border-radius: 30px;
 `;
 export const BtnText = styled.Text`
-  font-weight: bold;
-  font-size: 16px;
+  font-size: 18px;
   color: ${colors.prim1};
   text-transform: uppercase;
 `;
+
+export const styles = StyleSheet.create({
+  BtnText: {
+    fontSize: 15,
+    color: "#FFF"
+  }
+});

@@ -1,4 +1,4 @@
-#Mon Nov 25 11:51:32 BRT 2019
+#Mon Nov 25 14:15:05 BRT 2019
 base.0=/home/lara/reps/lop/lop-app-mobile/android/app/build/intermediates/transforms/dexMerger/debug/0
 path.0=classes.dex
 renamed.0=classes.dex
