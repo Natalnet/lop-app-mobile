@@ -1,54 +1,52 @@
-import React, { Component } from 'react';
-import { Text, View } from 'react-native';
-import Icon from 'react-native-vector-icons/MaterialIcons';
+import React, { Component } from "react";
+import { Text, View } from "react-native";
+// import Icon from "react-native-vector-icons/MaterialIcons";
 
-import {
-  Container,
-  BuscarView,
-  InputBuscar,
-  BuscarBtn,
-  ListTurmas,
-  TurmaContainer,
-  Title,
-  CriadaText,
-  CriadorText,
-  AdicionarBtn,
-  AdicionarBtnText,
-} from './styles';
+import { Container, styles, InputBox } from "./styles";
 
-import { colors } from '../../styles/mainStyles';
+import { Button, Icon, List, ListItem } from "react-native-ui-kitten";
 
-import turmas from '../../dataTemp/turmas';
+import { colors } from "../../styles/mainStyles";
+
+import turmas from "../../dataTemp/turmas";
 
 export default class BuscarTurmas extends Component {
-  renderTurma = (nome, criada) => {
-    return (
-      <TurmaContainer>
-        <Title>{nome}</Title>
-        <CriadaText>
-          Criada por: <CriadorText>{criada}</CriadorText>
-        </CriadaText>
-        <AdicionarBtn>
-          <AdicionarBtnText>Adicionar Turma</AdicionarBtnText>
-        </AdicionarBtn>
-      </TurmaContainer>
-    );
+  state = {
+    search: ""
   };
 
+  renderBtn = style => <Button style={style}>Ver Turma</Button>;
+
+  onChangeSearchText = search => {
+    this.setState({ search });
+  };
+
+  renderIcon = style => {
+    const iconName = "search";
+    return <Icon {...style} name={iconName} />;
+  };
+  onIconPress = () => {};
+
+  renderTurma = ({ item }) => (
+    <ListItem
+      title={`${item.nome}`}
+      description={`${item.criada}`}
+      accessory={this.renderBtn}
+    />
+  );
+
   render() {
+    const { search } = this.state;
     return (
       <Container>
-        <BuscarView>
-          <InputBuscar placeholder="Buscar turmas" />
-          <BuscarBtn>
-            <Icon name="search" color={colors.prim1} size={28} />
-          </BuscarBtn>
-        </BuscarView>
-        <ListTurmas
-          data={turmas}
-          keyExtractor={item => item.id}
-          renderItem={({ item }) => this.renderTurma(item.nome, item.criada)}
+        <InputBox
+          icon={this.renderIcon}
+          size='small'
+          placeholder='Pesquisar Turma'
+          value={search}
+          onChangeText={this.onChangeSearchText}
         />
+        <List style={styles.list} data={turmas} renderItem={this.renderTurma} />
       </Container>
     );
   }
