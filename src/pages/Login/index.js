@@ -1,80 +1,67 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 
-import { View, Text } from 'react-native';
+import { Icon } from "react-native-ui-kitten";
 
-import {
-  Container,
-  LabelInputView,
-  Label,
-  Input,
-  SubmitView,
-  ErrMsg,
-  Btn,
-  BtnText,
-  SwitchBtn,
-  SwitchBtnText,
-  EsqueceuView,
-} from './styles';
+import { Container, InputBox, Btn, styles } from "./styles";
+
+export const EntrarIcon = style => <Icon name='person-done' {...style} />;
 
 export default class Login extends Component {
   state = {
     esqueceuSenha: false,
+    email: "",
+    senha: ""
   };
 
   static navigationOptions = {
-    title: 'Entrar com uma conta',
+    title: "Entrar com uma conta"
+  };
+
+  onChangeEmailText = email => {
+    this.setState({ email });
+  };
+  onChangeSenhaText = senha => {
+    this.setState({ senha });
   };
 
   handleEntrar = () => {
     const { navigation } = this.props;
-    navigation.navigate('Home', { name: 'Fulano da Silva Sauro' });
+    navigation.navigate("Home", { name: "Fulano da Silva Sauro" });
   };
 
-  handleEsqueceuSenha = () => {
-    const { esqueceuSenha } = this.state;
-    this.setState({ esqueceuSenha: !esqueceuSenha });
+  isValidValue = () => {
+    return true;
   };
 
   render() {
-    const { esqueceuSenha } = this.state;
+    const { email, senha } = this.state;
+    const isValidInputValue = this.isValidValue();
     return (
       <Container>
-        <LabelInputView>
-          <Label>Email:</Label>
-          <Input />
-        </LabelInputView>
-
-        <LabelInputView>
-          <Label>Senha:</Label>
-          <Input />
-        </LabelInputView>
-        <SubmitView>
-          <ErrMsg>possível mensagem de erro</ErrMsg>
-          <Btn onPress={this.handleEntrar}>
-            <BtnText>Entrar</BtnText>
-          </Btn>
-          <SwitchBtn active={esqueceuSenha} onPress={this.handleEsqueceuSenha}>
-            <SwitchBtnText active={esqueceuSenha}>
-              Esqueceu a Senha
-            </SwitchBtnText>
-          </SwitchBtn>
-        </SubmitView>
-
-        {esqueceuSenha && (
-          <EsqueceuView>
-            <LabelInputView>
-              <Label>Email:</Label>
-              <Input />
-            </LabelInputView>
-
-            <SubmitView>
-              <ErrMsg>possível mensagem de erro</ErrMsg>
-              <Btn>
-                <BtnText>Recuperar Senha</BtnText>
-              </Btn>
-            </SubmitView>
-          </EsqueceuView>
-        )}
+        <InputBox
+          label='Email'
+          size='small'
+          status={isValidInputValue ? "primary" : "danger"}
+          caption={isValidInputValue ? "" : "Invalid value"}
+          value={email}
+          onChangeText={this.onChangeEmailText}
+        />
+        <InputBox
+          label='Senha'
+          size='small'
+          status={isValidInputValue ? "primary" : "danger"}
+          caption={isValidInputValue ? "" : "Invalid value"}
+          value={senha}
+          onChangeText={this.onChangeSenhaText}
+          secureTextEntry={true}
+        />
+        <Btn
+          icon={EntrarIcon}
+          onPress={this.handleEntrar}
+          textStyle={styles.BtnText}
+        >
+          Entrar
+        </Btn>
       </Container>
     );
   }
