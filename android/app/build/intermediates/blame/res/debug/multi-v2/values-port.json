@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "/home/glauberc/workspace/projetos/lop-plataforma/lop-app-mobile/android/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-port/values-port.xml",
+            "outputFile": "/home/lara/reps/lop/lop-app-mobile/android/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-port/values-port.xml",
             "map": [
                 {
-                    "source": "/root/.gradle/caches/transforms-2/files-2.1/bc816d32c364ca1772d4256419cc7383/res/values-port/values-port.xml",
+                    "source": "/home/lara/.gradle/caches/transforms-2/files-2.1/dd4047dde78a3641da75f68b585ea035/res/values-port/values-port.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
