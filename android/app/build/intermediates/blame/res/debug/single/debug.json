@@ -64,12 +64,12 @@
         "source": "/root/.gradle/caches/transforms-2/files-2.1/bc816d32c364ca1772d4256419cc7383/res/drawable-xxhdpi-v4/abc_ic_star_black_48dp.png"
     },
     {
-        "merged": "/home/glauberc/workspace/projetos/lop-plataforma/lop-app-mobile/android/app/build/intermediates/res/merged/debug/drawable-mdpi-v4_notification_bg_low_pressed.9.png.flat",
-        "source": "/root/.gradle/caches/transforms-2/files-2.1/3a4f4ceedacad6a743c6670a80f835f8/res/drawable-mdpi-v4/notification_bg_low_pressed.9.png"
-    },
-    {
         "merged": "/home/glauberc/workspace/projetos/lop-plataforma/lop-app-mobile/android/app/build/intermediates/res/merged/debug/layout_abc_list_menu_item_layout.xml.flat",
         "source": "/root/.gradle/caches/transforms-2/files-2.1/bc816d32c364ca1772d4256419cc7383/res/layout/abc_list_menu_item_layout.xml"
+    },
+    {
+        "merged": "/home/glauberc/workspace/projetos/lop-plataforma/lop-app-mobile/android/app/build/intermediates/res/merged/debug/drawable-mdpi-v4_notification_bg_low_pressed.9.png.flat",
+        "source": "/root/.gradle/caches/transforms-2/files-2.1/3a4f4ceedacad6a743c6670a80f835f8/res/drawable-mdpi-v4/notification_bg_low_pressed.9.png"
     },
     {
         "merged": "/home/glauberc/workspace/projetos/lop-plataforma/lop-app-mobile/android/app/build/intermediates/res/merged/debug/layout_notification_action_tombstone.xml.flat",
@@ -828,6 +828,10 @@
         "source": "/root/.gradle/caches/transforms-2/files-2.1/bc816d32c364ca1772d4256419cc7383/res/drawable-xxhdpi-v4/abc_ic_star_half_black_16dp.png"
     },
     {
+        "merged": "/home/glauberc/workspace/projetos/lop-plataforma/lop-app-mobile/android/app/build/intermediates/res/merged/debug/xml_file_provider_paths.xml.flat",
+        "source": "/home/glauberc/workspace/projetos/lop-plataforma/lop-app-mobile/node_modules/react-native-webview/android/build/intermediates/packaged_res/debug/xml/file_provider_paths.xml"
+    },
+    {
         "merged": "/home/glauberc/workspace/projetos/lop-plataforma/lop-app-mobile/android/app/build/intermediates/res/merged/debug/drawable-xxxhdpi-v4_abc_ic_menu_paste_mtrl_am_alpha.png.flat",
         "source": "/root/.gradle/caches/transforms-2/files-2.1/bc816d32c364ca1772d4256419cc7383/res/drawable-xxxhdpi-v4/abc_ic_menu_paste_mtrl_am_alpha.png"
     },
@@ -1408,12 +1412,12 @@
         "source": "/root/.gradle/caches/transforms-2/files-2.1/bc816d32c364ca1772d4256419cc7383/res/anim/abc_slide_out_bottom.xml"
     },
     {
-        "merged": "/home/glauberc/workspace/projetos/lop-plataforma/lop-app-mobile/android/app/build/intermediates/res/merged/debug/layout-v21_notification_action.xml.flat",
-        "source": "/root/.gradle/caches/transforms-2/files-2.1/3a4f4ceedacad6a743c6670a80f835f8/res/layout-v21/notification_action.xml"
-    },
-    {
         "merged": "/home/glauberc/workspace/projetos/lop-plataforma/lop-app-mobile/android/app/build/intermediates/res/merged/debug/drawable-watch-v20_abc_dialog_material_background.xml.flat",
         "source": "/root/.gradle/caches/transforms-2/files-2.1/bc816d32c364ca1772d4256419cc7383/res/drawable-watch-v20/abc_dialog_material_background.xml"
+    },
+    {
+        "merged": "/home/glauberc/workspace/projetos/lop-plataforma/lop-app-mobile/android/app/build/intermediates/res/merged/debug/layout-v21_notification_action.xml.flat",
+        "source": "/root/.gradle/caches/transforms-2/files-2.1/3a4f4ceedacad6a743c6670a80f835f8/res/layout-v21/notification_action.xml"
     },
     {
         "merged": "/home/glauberc/workspace/projetos/lop-plataforma/lop-app-mobile/android/app/build/intermediates/res/merged/debug/drawable-xxxhdpi-v4_abc_ic_star_half_black_36dp.png.flat",
