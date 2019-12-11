@@ -1,5 +1,5 @@
-android/app/build/
-android/.gradle/
+android/app/build/*
+android/.gradle/5.5/*
 
 
 # Logs
