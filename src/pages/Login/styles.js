@@ -12,6 +12,7 @@ export const Container = styled.View`
 
 export const InputBox = styled(Input)`
   margin-bottom: 20px;
+  border-radius: 10px;
 `;
 
 export const Btn = styled(Button)`

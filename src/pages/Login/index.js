@@ -4,7 +4,8 @@ import { Icon } from "react-native-ui-kitten";
 
 import { Container, InputBox, Btn, styles } from "./styles";
 
-export const EntrarIcon = style => <Icon name='person-done' {...style} />;
+export const EntrarIcon = style => <Icon name="person-done" {...style} />;
+export const EyeOffIcon = style => <Icon name="eye-off" {...style} />;
 
 export default class Login extends Component {
   state = {
@@ -39,16 +40,17 @@ export default class Login extends Component {
     return (
       <Container>
         <InputBox
-          label='Email'
-          size='small'
+          label="Email"
+          size="small"
           status={isValidInputValue ? "primary" : "danger"}
           caption={isValidInputValue ? "" : "Invalid value"}
           value={email}
           onChangeText={this.onChangeEmailText}
         />
         <InputBox
-          label='Senha'
-          size='small'
+          label="Senha"
+          size="small"
+          icon={EyeOffIcon}
           status={isValidInputValue ? "primary" : "danger"}
           caption={isValidInputValue ? "" : "Invalid value"}
           value={senha}
