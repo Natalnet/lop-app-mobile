@@ -15,7 +15,14 @@ export default class BuscarTurmas extends Component {
     search: ""
   };
 
-  renderBtn = style => <Button style={style}>Ver Turma</Button>;
+  renderBtn = style => {
+    const { navigation } = this.props;
+    return (
+      <Button onPress={() => navigation.navigate("Turma")} style={style}>
+        Ver Turma
+      </Button>
+    );
+  };
 
   onChangeSearchText = search => {
     this.setState({ search });
@@ -37,12 +44,13 @@ export default class BuscarTurmas extends Component {
 
   render() {
     const { search } = this.state;
+
     return (
       <Container>
         <InputBox
           icon={this.renderIcon}
-          size='small'
-          placeholder='Pesquisar Turma'
+          size="small"
+          placeholder="Pesquisar Turma"
           value={search}
           onChangeText={this.onChangeSearchText}
         />

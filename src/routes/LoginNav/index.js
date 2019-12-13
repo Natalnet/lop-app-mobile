@@ -12,6 +12,7 @@ import Login from "../../pages/Login";
 import Cadastro from "../../pages/Cadastro";
 import DrawerNav from "../DrawerNav";
 import IdeNav from "../IdeNav";
+import TurmaNav from "../TurmaNav";
 
 const LoginNav = createAppContainer(
   createStackNavigator(
@@ -21,6 +22,9 @@ const LoginNav = createAppContainer(
       Cadastro,
       Ide: {
         screen: IdeNav
+      },
+      Turma: {
+        screen: TurmaNav
       },
       Home: {
         screen: DrawerNav,
@@ -32,7 +36,7 @@ const LoginNav = createAppContainer(
                 <NameText>{navigation.getParam("name")}</NameText>
               </FotoNameView>
               <MenuBtn onPress={() => navigation.toggleDrawer()}>
-                <Icon name='menu' color={colors.sec1} size={32} />
+                <Icon name="menu" color={colors.sec1} size={32} />
               </MenuBtn>
             </Container>
           )

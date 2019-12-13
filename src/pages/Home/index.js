@@ -16,6 +16,14 @@ export default class Home extends Component {
         >
           <Text style={{ color: "#fff", textAlign: "center" }}>Teste IDE</Text>
         </TouchableOpacity>
+        <TouchableOpacity
+          onPress={() => navigation.navigate("Turma")}
+          style={{ padding: 10, backgroundColor: "#00f" }}
+        >
+          <Text style={{ color: "#fff", textAlign: "center" }}>
+            Teste Turma
+          </Text>
+        </TouchableOpacity>
       </Container>
     );
   }

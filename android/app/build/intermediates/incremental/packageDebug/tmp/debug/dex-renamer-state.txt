@@ -1,10 +1,4 @@
-<<<<<<< HEAD
-#Wed Nov 27 09:25:03 BRT 2019
-base.0=/home/glauberc/workspace/projetos/lop-plataforma/lop-app-mobile/android/app/build/intermediates/transforms/dexMerger/debug/0
-renamed.0=classes.dex
-=======
-#Mon Nov 25 17:56:44 BRT 2019
+#Wed Dec 11 15:28:05 BRT 2019
 base.0=/home/lara/reps/lop/lop-app-mobile/android/app/build/intermediates/transforms/dexMerger/debug/0
->>>>>>> desenvolvimento
 path.0=classes.dex
 renamed.0=classes.dex
