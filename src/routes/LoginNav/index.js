@@ -33,10 +33,10 @@ const LoginNav = createAppContainer(
             <Container>
               <FotoNameView>
                 <FotoView />
-                <NameText>{navigation.getParam("name")}</NameText>
+                <NameText>{navigation.getParam("user").name}</NameText>
               </FotoNameView>
               <MenuBtn onPress={() => navigation.toggleDrawer()}>
-                <Icon name="menu" color={colors.sec1} size={32} />
+                <Icon name='menu' color={colors.sec1} size={32} />
               </MenuBtn>
             </Container>
           )
