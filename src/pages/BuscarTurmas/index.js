@@ -30,6 +30,7 @@ export default class BuscarTurmas extends Component {
     const response = await api.get("/user/class/page/1", auth);
     this.setState({ turmas: response.data.docs, loading: false });
   }
+
   renderBtn = style => {
     const { navigation } = this.props;
     return (
@@ -58,6 +59,7 @@ export default class BuscarTurmas extends Component {
   );
 
   render() {
+
     const { search, turmas, loading } = this.state;
 
     return (
