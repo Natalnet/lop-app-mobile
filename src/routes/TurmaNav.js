@@ -6,9 +6,13 @@ import TurmaTabNav from "./TurmaTabNav";
 const TurmaNav = createAppContainer(
   createStackNavigator(
     {
+<<<<<<< HEAD
+      TurmaTabNav: TurmaTabNav
+=======
       TurmaTabNav: {
         screen: TurmaTabNav
       }
+>>>>>>> desenvolvimento
     },
     {
       defaultNavigationOptions: {

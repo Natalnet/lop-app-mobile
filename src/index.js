@@ -11,6 +11,7 @@ import {
   Text,
   IconRegistry
 } from "react-native-ui-kitten";
+
 import { EvaIconsPack } from "@ui-kitten/eva-icons";
 
 const App: () => React$Node = () => (

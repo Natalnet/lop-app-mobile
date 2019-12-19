@@ -6,6 +6,10 @@ import { Input } from "react-native-ui-kitten";
 export const Container = styled.View`
   flex: 1;
 `;
+export const LoadingContainer = styled.View`
+  justify-content: center;
+  align-items: center;
+`;
 
 export const InputBox = styled(Input)`
   margin-bottom: 20px;
