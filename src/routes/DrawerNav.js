@@ -9,13 +9,6 @@ const DrawerNav = createAppContainer(
   createDrawerNavigator({
     Home,
     BuscarTurmas
-    // Ide: {
-    //   screen: IdeNav,
-    //   navigationOptions: {
-    //     // Escondido do Drawer
-    //     drawerLabel: () => null
-    //   }
-    // }
   })
 );
 

@@ -4,14 +4,16 @@ import { Icon } from "react-native-ui-kitten";
 
 import { Container, InputBox, Btn, styles } from "./styles";
 
-export const EntrarIcon = style => <Icon name="person-done" {...style} />;
-export const EyeOffIcon = style => <Icon name="eye-off" {...style} />;
+export const EntrarIcon = style => <Icon name='person-done' {...style} />;
+export const EyeOffIcon = style => <Icon name='eye-off' {...style} />;
+
+import api from "../../services/api";
 
 export default class Login extends Component {
   state = {
     esqueceuSenha: false,
-    email: "",
-    senha: ""
+    email: "aluno1@gmail.com",
+    senha: "123456"
   };
 
   static navigationOptions = {
@@ -25,9 +27,18 @@ export default class Login extends Component {
     this.setState({ senha });
   };
 
-  handleEntrar = () => {
+  handleEntrar = async () => {
     const { navigation } = this.props;
-    navigation.navigate("Home", { name: "Fulano da Silva Sauro" });
+    const { email, senha } = this.state;
+
+    const response = await api.post("/auth/authenticate", {
+      email,
+      password: senha
+    });
+    if (response.data.user) {
+      const { user, token } = response.data;
+      navigation.navigate("Home", { user, token });
+    }
   };
 
   isValidValue = () => {
@@ -40,16 +51,16 @@ export default class Login extends Component {
     return (
       <Container>
         <InputBox
-          label="Email"
-          size="small"
+          label='Email'
+          size='small'
           status={isValidInputValue ? "primary" : "danger"}
           caption={isValidInputValue ? "" : "Invalid value"}
           value={email}
           onChangeText={this.onChangeEmailText}
         />
         <InputBox
-          label="Senha"
-          size="small"
+          label='Senha'
+          size='small'
           icon={EyeOffIcon}
           status={isValidInputValue ? "primary" : "danger"}
           caption={isValidInputValue ? "" : "Invalid value"}

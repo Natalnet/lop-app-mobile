@@ -677,15 +677,25 @@
   resolved "https://registry.yarnpkg.com/@eva-design/dss/-/dss-1.2.0.tgz#a7043fb0c7042fddabe46affd10faa0bcbb601eb"
   integrity sha512-iBmaj33uniTENTvt54lrgU+qxkURh1oAGZeG11tuEOV4muhqFKOUeH7LvvgGeOVPfNOkOmPZR2hpJD77v+iiaw==
 
-"@eva-design/eva@^1.2.0":
-  version "1.2.0"
-  resolved "https://registry.yarnpkg.com/@eva-design/eva/-/eva-1.2.0.tgz#dc7714f31b7abfd928a8a3cefc28726a506afc60"
-  integrity sha512-6yXXCTaYUozHJmn1ksi/JBFCt2JFd1glgKuimT8BRcocaXNGHcmYPyPLpIDpcP0VZ+LyQr5cMMC0hzf3OXUlqQ==
+"@eva-design/dss@^1.3.1":
+  version "1.3.1"
+  resolved "https://registry.yarnpkg.com/@eva-design/dss/-/dss-1.3.1.tgz#b9105b7df1791a89a789a1e617aa39e1066a1415"
+  integrity sha512-l6ggdlkDala+uMWlNxK+unonbLwuPjUZykNwK5+XbBrdgrQkgO5c7QXWtM8E2PczWehOLKwsQX7EIf3A7nZaIA==
+
+"@eva-design/eva@^1.3.1":
+  version "1.3.1"
+  resolved "https://registry.yarnpkg.com/@eva-design/eva/-/eva-1.3.1.tgz#d8c3a042a0fc43dcd9d6626b330b3166d6fe27c1"
+  integrity sha512-fjY1J3hg1GeGU1YGgbGbjDTS04emFG1xEkCpoT8syouKgxk/BIH0sJ8f3lS4p0DaVtsPmWO17Kah5F1nihjwgA==
 
 "@eva-design/processor@^1.2.0":
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/@eva-design/processor/-/processor-1.2.0.tgz#8a064d41061810b8da3d7a813ae5b4da7c996ff0"
   integrity sha512-UDx+c8B9GOUY/ccrAE+0D3cN6Mz51i2Ihy7fyi4NWOmL1MM7CgOy52RrMCpj/zUvdU64mOSIvlLVgTJ7lj4bLA==
+
+"@eva-design/processor@^1.3.1":
+  version "1.3.1"
+  resolved "https://registry.yarnpkg.com/@eva-design/processor/-/processor-1.3.1.tgz#178b760037ae9365d78cf78f223c5067ac4c0234"
+  integrity sha512-xjPZFkt77bsxWNBmJru0d2t6DZJ/AZUQzTYieY65TB0MV6+Q7kL8cR/SnkPgl2JS7VNkUL9kpG2JHLWn4AhOjA==
 
 "@hapi/address@2.x.x":
   version "2.1.2"
@@ -1092,6 +1102,17 @@
     lodash.unescape "4.0.1"
     semver "5.5.0"
 
+"@ui-kitten/components@^4.3.2":
+  version "4.3.2"
+  resolved "https://registry.yarnpkg.com/@ui-kitten/components/-/components-4.3.2.tgz#58da1df3af9c20c280f061fcc0bb6a4e0d013e9c"
+  integrity sha512-j47NHAzUX1CFdwx8yg+4+pWDuFPFjZIWjSAsCBxJb8ch3v84iFMgBZ7MqNujEW8u90eRlDOI2Yp9TSNQh2aXmg==
+  dependencies:
+    "@eva-design/dss" "^1.3.1"
+    "@eva-design/processor" "^1.3.1"
+    fecha "3.0.3"
+    hoist-non-react-statics "^3.2.1"
+    lodash.merge "^4.6.1"
+
 "@ui-kitten/eva-icons@^4.2.0":
   version "4.2.0"
   resolved "https://registry.yarnpkg.com/@ui-kitten/eva-icons/-/eva-icons-4.2.0.tgz#208e39d89e7a7d99d93a1d4b17184e78ec7f26d9"
@@ -1411,6 +1432,14 @@ aws4@^1.8.0:
   version "1.8.0"
   resolved "https://registry.yarnpkg.com/aws4/-/aws4-1.8.0.tgz#f0e003d9ca9e7f59c7a508945d7b2ef9a04a542f"
   integrity sha512-ReZxvNHIOv88FlT7rxcXIIC0fPt4KZqZbOlivyWtXLt8ESx84zd3kMC6iK5jVeS2qt+g7ftS7ye4fi06X5rtRQ==
+
+axios@^0.19.0:
+  version "0.19.0"
+  resolved "https://registry.yarnpkg.com/axios/-/axios-0.19.0.tgz#8e09bff3d9122e133f7b8101c8fbdd00ed3d2ab8"
+  integrity sha512-1uvKqKQta3KBxIz14F2v06AEHZ/dIoeKfbTRkK1E5oqjDnuEerLmYTgJB5AiQZHJcljpg1TuRzdjDR06qNk0DQ==
+  dependencies:
+    follow-redirects "1.5.10"
+    is-buffer "^2.0.2"
 
 axobject-query@^2.0.2:
   version "2.0.2"
@@ -2091,6 +2120,13 @@ debug@2.6.9, debug@^2.2.0, debug@^2.3.3, debug@^2.6.8, debug@^2.6.9:
   version "2.6.9"
   resolved "https://registry.yarnpkg.com/debug/-/debug-2.6.9.tgz#5d128515df134ff327e90a4c93f4e077a536341f"
   integrity sha512-bC7ElrdJaJnPbAP+1EotYvqZsb3ecl5wi6Bfi6BJTUcNowp6cvspg0jXznRTKDjm/E7AdgFBVeAPVMNcKGsHMA==
+  dependencies:
+    ms "2.0.0"
+
+debug@=3.1.0:
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/debug/-/debug-3.1.0.tgz#5bb5a0672628b64149566ba16819e61518c67261"
+  integrity sha512-OX8XqP7/1a9cqkxYw2yXss15f26NKWBpDXQd0/uK/KPqdQhxbPa994hnzjcE2VqQpDslf55723cKPUOGSmMY3g==
   dependencies:
     ms "2.0.0"
 
@@ -2962,6 +2998,13 @@ flatted@^2.0.0:
   resolved "https://registry.yarnpkg.com/flatted/-/flatted-2.0.1.tgz#69e57caa8f0eacbc281d2e2cb458d46fdb449e08"
   integrity sha512-a1hQMktqW9Nmqr5aktAux3JMNqaucxGcjtjWnZLHX7yyPCmlSV3M54nGYbqT8K+0GhF3NBgmJCc3ma+WOgX8Jg==
 
+follow-redirects@1.5.10:
+  version "1.5.10"
+  resolved "https://registry.yarnpkg.com/follow-redirects/-/follow-redirects-1.5.10.tgz#7b7a9f9aea2fdff36786a94ff643ed07f4ff5e2a"
+  integrity sha512-0V5l4Cizzvqt5D44aTXbFZz+FtyXV1vrDN6qrelxtfYQKW0KO0W2T/hkE8xvGa/540LkZlkaUjO4ailYTFtHVQ==
+  dependencies:
+    debug "=3.1.0"
+
 for-in@^1.0.2:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/for-in/-/for-in-1.0.2.tgz#81068d295a8142ec0ac726c6e2200c30fb6d5e80"
@@ -3421,6 +3464,11 @@ is-buffer@^1.1.5:
   version "1.1.6"
   resolved "https://registry.yarnpkg.com/is-buffer/-/is-buffer-1.1.6.tgz#efaa2ea9daa0d7ab2ea13a97b2b8ad51fefbe8be"
   integrity sha512-NcdALwpXkTm5Zvvbk7owOUSvVvBKDgKP5/ewfXEznmQFfs4ZRmanOeKBTjRVjka3QFoN6XJ+9F3USqfHqTaU5w==
+
+is-buffer@^2.0.2:
+  version "2.0.4"
+  resolved "https://registry.yarnpkg.com/is-buffer/-/is-buffer-2.0.4.tgz#3e572f23c8411a5cfd9557c849e3665e0b290623"
+  integrity sha512-Kq1rokWXOPXWuaMAqZiJW4XxsmD9zGx9q4aePabbn3qCRGedtH7Cm+zV8WETitMfu1wdh+Rvd6w5egwSngUX2A==
 
 is-callable@^1.1.4:
   version "1.1.4"
@@ -5547,20 +5595,20 @@ react-native-eva-icons@1.1.0:
   resolved "https://registry.yarnpkg.com/react-native-eva-icons/-/react-native-eva-icons-1.1.0.tgz#323e55d759187edc216d049e7c0012a27383e0ed"
   integrity sha512-0k6sbiKoHxmmbCgAZTHj6llcdcwtbyZJ1E2AK0my7QU0WRaWwqWMep5AUlMbrIiuYE9mkMZiabEXYcfn3ir2PA==
 
-react-native-gesture-handler@^1.4.1:
-  version "1.4.1"
-  resolved "https://registry.yarnpkg.com/react-native-gesture-handler/-/react-native-gesture-handler-1.4.1.tgz#c38d9e57637b95e221722a79f2bafac62e3aeb21"
-  integrity sha512-Ffcs+SbEbkGaal0CClYL+v7A9y4OA5G5lW01qrzjxaqASp5C8BfnWSKuqYKE00s6bLwE5L4xnlHkG0yIxAtbrQ==
+react-native-gesture-handler@^1.5.2:
+  version "1.5.2"
+  resolved "https://registry.yarnpkg.com/react-native-gesture-handler/-/react-native-gesture-handler-1.5.2.tgz#281111550bf1eee10b7feba5278d142169892731"
+  integrity sha512-Xp03dq4XYVTD0xmWx4DW4eX+ox1NQLjHmbykspTdS5FCNIVIOekVXRLFCw1698/v8dYUHApNo6K3s3BCD8fqPA==
   dependencies:
     hammerjs "^2.0.8"
     hoist-non-react-statics "^2.3.1"
     invariant "^2.2.4"
     prop-types "^15.7.2"
 
-react-native-reanimated@^1.3.0:
-  version "1.3.0"
-  resolved "https://registry.yarnpkg.com/react-native-reanimated/-/react-native-reanimated-1.3.0.tgz#581cdb0bd1ff05e7304b116af712ded0c7665ede"
-  integrity sha512-KFno6D0q09kx71IDuPa4qeC1t1msALsCMuli3/EN3YDf8XoM2CG53yzhVHMFtmcW0IUCySugHgxQiuT5BzwOPA==
+react-native-reanimated@^1.4.0:
+  version "1.4.0"
+  resolved "https://registry.yarnpkg.com/react-native-reanimated/-/react-native-reanimated-1.4.0.tgz#7f1acbf9be08492d834f512700570978052be2f9"
+  integrity sha512-tO7nSNNP+iRLVbkcSS5GXyDBb7tSI02+XuRL3/S39EAr35rnvUy2JfeLUQG+fWSObJjnMVhasUDEUwlENk8IXw==
 
 react-native-safe-area-view@^0.14.1, react-native-safe-area-view@^0.14.6:
   version "0.14.8"
