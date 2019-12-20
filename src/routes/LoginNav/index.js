@@ -13,6 +13,7 @@ import Cadastro from "../../pages/Cadastro";
 import DrawerNav from "../DrawerNav";
 import IdeNav from "../IdeNav";
 import TurmaTabNav from "../TurmaTabNav";
+import ListQuestions from "../../pages/ListQuestions";
 
 const LoginNav = createAppContainer(
   createStackNavigator(
@@ -26,6 +27,7 @@ const LoginNav = createAppContainer(
       Turma: {
         screen: TurmaTabNav
       },
+      ListQuestions,
       Home: {
         screen: DrawerNav,
         navigationOptions: ({ navigation }) => ({

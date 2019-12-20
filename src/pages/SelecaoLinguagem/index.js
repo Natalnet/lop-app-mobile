@@ -10,7 +10,9 @@ const linguagens = [
 export default class SelecaoLinguagem extends Component {
   handleSelectLanguage = language => {
     const { navigation } = this.props;
-    navigation.navigate("Ide", { language });
+    const description = navigation.getParam("description");
+    console.tron.log(description);
+    navigation.navigate("Ide", { language, description });
   };
 
   renderItem = ({ item }) => (

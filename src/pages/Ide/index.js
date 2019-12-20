@@ -19,16 +19,17 @@ export default class Ide extends React.Component {
     this.state = {
       msg: "input content",
       language: "",
-      questionActive: true
+      questionActive: true,
+      description: ""
     };
     this.myWebView;
   }
   componentDidMount() {
     const { navigation } = this.props;
     const langParam = navigation.getParam("language");
+    const description = navigation.getParam("description");
     const language = langParam === "C++" ? "c_cpp" : langParam;
-    console.tron.log(language);
-    this.setState({ language });
+    this.setState({ language, description });
   }
 
   renderPage = () => {
@@ -118,7 +119,7 @@ export default class Ide extends React.Component {
 
   questionIcon = (style, active) => {
     const { questionActive } = this.state;
-    const iconName = active
+    const iconName = questionActive
       ? "arrow-ios-upward-outline"
       : "arrow-ios-downward-outline";
     return <Icon {...style} name={iconName} />;
@@ -133,7 +134,7 @@ export default class Ide extends React.Component {
     const renderLoading = () => (
       <ActivityIndicator style={{ flex: 1 }} animating color='blue' />
     );
-    const { language, questionActive } = this.state;
+    const { language, questionActive, description } = this.state;
     return (
       <View style={{ flex: 1, marginHorizontal: 10, marginVertical: 20 }}>
         <Button
@@ -145,24 +146,7 @@ export default class Ide extends React.Component {
 
         {questionActive && (
           <ScrollView style={{ flex: 5 }}>
-            <Text>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam, quis nostrud exercitation ullamco laboris
-              nisi ut Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-              sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-              Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
-              nisi ut Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-              sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-              Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
-              nisi ut Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-              sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-              Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
-              nisi ut Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-              sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-              Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
-              nisi ut
-            </Text>
+            <Text>{description}</Text>
           </ScrollView>
         )}
         <WebView
