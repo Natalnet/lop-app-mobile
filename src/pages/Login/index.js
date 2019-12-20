@@ -9,6 +9,8 @@ export const EyeOffIcon = style => <Icon name='eye-off' {...style} />;
 
 import api from "../../services/api";
 
+import AsyncStorage from "@react-native-community/async-storage";
+
 export default class Login extends Component {
   state = {
     esqueceuSenha: false,
@@ -37,6 +39,13 @@ export default class Login extends Component {
     });
     if (response.data.user) {
       const { user, token } = response.data;
+
+      try {
+        await AsyncStorage.setItem("@token", token);
+        await AsyncStorage.setItem("@user_name", user.name);
+      } catch (e) {
+        // saving error
+      }
       navigation.navigate("Home", { user, token });
     }
   };
