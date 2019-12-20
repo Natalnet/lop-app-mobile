@@ -13,6 +13,8 @@ import java.util.ArrayList;
 import com.lopmobile.BuildConfig;
 import com.lopmobile.R;
 
+// @react-native-community/async-storage
+import com.reactnativecommunity.asyncstorage.AsyncStoragePackage;
 // react-native-gesture-handler
 import com.swmansion.gesturehandler.react.RNGestureHandlerPackage;
 // react-native-reanimated
@@ -56,6 +58,7 @@ public class PackageList {
   public ArrayList<ReactPackage> getPackages() {
     return new ArrayList<>(Arrays.<ReactPackage>asList(
       new MainReactPackage(),
+      new AsyncStoragePackage(),
       new RNGestureHandlerPackage(),
       new ReanimatedPackage(),
       new SvgPackage(),

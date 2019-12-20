@@ -1,10 +1,21 @@
 import React, { Component } from "react";
-import { Text, View } from "react-native";
+import { Text, View, FlatList } from "react-native";
 // import Icon from "react-native-vector-icons/MaterialIcons";
 
-import { Container, styles, InputBox, LoadingContainer } from "./styles";
+import {
+  Container,
+  InputBox,
+  LoadingContainer,
+  ViewClass,
+  TextClassCodeText,
+  TextClassTitle,
+  TextDescriptionClass,
+  BtnClass,
+  TextBtnClass,
+  ContainerHeader
+} from "./styles";
 
-import { Button, Icon, List, ListItem, Spinner } from "react-native-ui-kitten";
+import { Button, Icon, Spinner } from "react-native-ui-kitten";
 
 import { colors } from "../../styles/mainStyles";
 
@@ -30,13 +41,9 @@ export default class BuscarTurmas extends Component {
     const response = await api.get("/user/class/page/1", auth);
     this.setState({ turmas: response.data.docs, loading: false });
   }
-  renderBtn = style => {
+  handleClassPress = id => {
     const { navigation } = this.props;
-    return (
-      <Button onPress={() => navigation.navigate("Turma")} style={style}>
-        Ver Turma
-      </Button>
-    );
+    navigation.navigate("Turma", { classId: id });
   };
 
   onChangeSearchText = search => {
@@ -49,13 +56,12 @@ export default class BuscarTurmas extends Component {
   };
   onIconPress = () => {};
 
-  renderTurma = ({ item }) => (
-    <ListItem
-      title={`${item.name}`}
-      description={`${item.code} - ${item.state}`}
-      accessory={this.renderBtn}
-    />
-  );
+  descriptionReduce = description => {
+    if (description.length > 100) {
+      return `${description.slice(0, 100)}...`;
+    }
+    return description;
+  };
 
   render() {
     const { search, turmas, loading } = this.state;
@@ -74,10 +80,27 @@ export default class BuscarTurmas extends Component {
             <Spinner status='primary' />
           </LoadingContainer>
         ) : (
-          <List
-            style={styles.list}
+          <FlatList
             data={turmas}
-            renderItem={this.renderTurma}
+            keyExtractor={item => item.id}
+            renderItem={({ item }) => (
+              <ViewClass>
+                <ContainerHeader>
+                  <View>
+                    <TextClassCodeText>{item.code}</TextClassCodeText>
+                    <TextClassTitle>
+                      {item.name} - {item.year}.{item.semester}
+                    </TextClassTitle>
+                  </View>
+                  <BtnClass onPress={() => this.handleClassPress(item.id)}>
+                    <TextBtnClass>Entrar</TextBtnClass>
+                  </BtnClass>
+                </ContainerHeader>
+                <TextDescriptionClass>
+                  {this.descriptionReduce(item.description)}
+                </TextDescriptionClass>
+              </ViewClass>
+            )}
           />
         )}
       </Container>
