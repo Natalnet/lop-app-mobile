@@ -2,11 +2,6 @@ import React, { Component } from "react";
 import { Text, View, FlatList } from "react-native";
 // import Icon from "react-native-vector-icons/MaterialIcons";
 
-<<<<<<< HEAD
-import { Container, styles, InputBox, LoadingContainer } from "./styles";
-
-import { Button, Icon, List, ListItem, Spinner } from "react-native-ui-kitten";
-=======
 import {
   Container,
   InputBox,
@@ -20,10 +15,7 @@ import {
   ContainerHeader
 } from "./styles";
 
-import { Button, Icon, Spinner } from "react-native-ui-kitten";
->>>>>>> desenvolvimento
-
-import { colors } from "../../styles/mainStyles";
+import { Icon, Spinner } from "react-native-ui-kitten";
 
 // import turmas from "../../dataTemp/turmas";
 
