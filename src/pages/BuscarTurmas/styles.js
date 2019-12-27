@@ -39,10 +39,32 @@ export const TextDescriptionClass = styled.Text`
   max-width: 250px;
   color: ${colors.tert2};
 `;
+
+export const ViewProfessor = styled.View`
+  padding: 5px 0;
+`;
+export const TextProfessor = styled.Text`
+  color: ${colors.prim3};
+`;
+
+export const ViewGroupDetails = styled.View`
+  margin-top: 10px;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+`;
+export const ViewDetail = styled.View`
+  flex-direction: row;
+  margin-right: 15px;
+`;
+export const TextNumberDetail = styled.Text`
+  color: ${colors.prim3};
+  padding-left: 3px;
+`;
 export const BtnClass = styled(RectButton)`
   background: ${colors.prim1};
   padding: 10px 15px;
-  border-radius: 4px;
+  border-radius: 20px;
   elevation: 4;
 `;
 export const TextBtnClass = styled.Text`

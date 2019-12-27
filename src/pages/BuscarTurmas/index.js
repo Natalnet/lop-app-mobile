@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Text, View, FlatList } from "react-native";
-// import Icon from "react-native-vector-icons/MaterialIcons";
+import VecIcon from "react-native-vector-icons/MaterialIcons";
+import { colors } from "../../styles/mainStyles";
 
 import {
   Container,
@@ -12,7 +13,12 @@ import {
   TextDescriptionClass,
   BtnClass,
   TextBtnClass,
-  ContainerHeader
+  ContainerHeader,
+  ViewProfessor,
+  TextProfessor,
+  ViewGroupDetails,
+  ViewDetail,
+  TextNumberDetail
 } from "./styles";
 
 import { Icon, Spinner } from "react-native-ui-kitten";
@@ -36,12 +42,15 @@ export default class BuscarTurmas extends Component {
     var auth = {
       headers: { Authorization: "bearer " + token }
     };
-    const response = await api.get("/user/class/page/1", auth);
-    this.setState({ turmas: response.data.docs, loading: false });
+    const response = await api.get("/class?myClasses=yes", auth);
+    this.setState({ turmas: response.data, loading: false });
   }
-  handleClassPress = id => {
+  handleClassPress = (id, name, year, semester) => {
     const { navigation } = this.props;
-    navigation.navigate("Turma", { classId: id });
+    navigation.navigate("Turma", {
+      classId: id,
+      className: `${name} - ${year}.${semester}`
+    });
   };
 
   onChangeSearchText = search => {
@@ -89,14 +98,51 @@ export default class BuscarTurmas extends Component {
                     <TextClassTitle>
                       {item.name} - {item.year}.{item.semester}
                     </TextClassTitle>
+                    <ViewProfessor>
+                      <TextProfessor> {item.author.name}</TextProfessor>
+                      <TextProfessor> {item.author.email}</TextProfessor>
+                    </ViewProfessor>
                   </View>
-                  <BtnClass onPress={() => this.handleClassPress(item.id)}>
+                  <BtnClass
+                    onPress={() =>
+                      this.handleClassPress(
+                        item.id,
+                        item.name,
+                        item.year,
+                        item.semester
+                      )
+                    }
+                  >
                     <TextBtnClass>Entrar</TextBtnClass>
                   </BtnClass>
                 </ContainerHeader>
                 <TextDescriptionClass>
                   {this.descriptionReduce(item.description)}
                 </TextDescriptionClass>
+                <ViewGroupDetails>
+                  <ViewDetail>
+                    <VecIcon name='person' size={20} color={colors.prim3} />
+                    <TextNumberDetail>{item.usersCount}</TextNumberDetail>
+                  </ViewDetail>
+                  <ViewDetail>
+                    <VecIcon
+                      name='description'
+                      size={20}
+                      color={colors.prim3}
+                    />
+                    <TextNumberDetail>{item.listsCount}</TextNumberDetail>
+                  </ViewDetail>
+                  <ViewDetail>
+                    <VecIcon name='assignment' size={20} color={colors.prim3} />
+                    <TextNumberDetail>{item.testsCount}</TextNumberDetail>
+                  </ViewDetail>
+                  <ViewDetail>
+                    <VecIcon name='group-add' size={20} color={colors.prim3} />
+                    <TextNumberDetail>
+                      {item.solicitationsCount}
+                    </TextNumberDetail>
+                  </ViewDetail>
+                </ViewGroupDetails>
               </ViewClass>
             )}
           />

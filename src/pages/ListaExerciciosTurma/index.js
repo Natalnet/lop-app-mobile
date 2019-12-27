@@ -20,12 +20,13 @@ import { Spinner } from "react-native-ui-kitten";
 export default class ListaExerciciosTurma extends Component {
   state = {
     listas: [],
-    loading: false
+    loading: false,
+    classId: ""
   };
   async componentDidMount() {
     this.setState({ loading: true });
     const { navigation } = this.props;
-    const class_id = navigation.getParam("classId");
+    const classId = navigation.getParam("classId");
     try {
       const token = await AsyncStorage.getItem("@token");
       if (token !== null) {
@@ -33,21 +34,25 @@ export default class ListaExerciciosTurma extends Component {
           headers: { Authorization: "bearer " + token }
         };
         const response = await api.get(
-          `/listQuestion/class/${class_id}/page/1`,
+          `/listQuestion?idClass=${classId}`,
           auth
         );
 
-        this.setState({ listas: response.data.docs, loading: false });
-        console.tron.log(response.data.docs);
+        this.setState({ listas: response.data, loading: false, classId });
       }
     } catch (e) {
       // error reading value
     }
   }
 
-  handleListPress = (id, title, questions) => {
+  handleListPress = (id, name) => {
+    const { classId } = this.state;
     const { navigation } = this.props;
-    navigation.navigate("ListQuestions", { id, title, questions });
+    navigation.navigate("Questoes", {
+      listId: id,
+      listName: `${name}`,
+      classId
+    });
   };
   render() {
     const { listas, loading } = this.state;
@@ -68,9 +73,7 @@ export default class ListaExerciciosTurma extends Component {
                   <TextListTitle>{item.title}</TextListTitle>
                 </View>
                 <BtnList
-                  onPress={() =>
-                    this.handleListPress(item.id, item.title, item.questions)
-                  }
+                  onPress={() => this.handleListPress(item.id, item.title)}
                 >
                   <TextBtnList>Abrir</TextBtnList>
                 </BtnList>

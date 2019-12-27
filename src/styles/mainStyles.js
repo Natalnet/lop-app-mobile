@@ -1,6 +1,7 @@
 export const colors = {
   prim1: "#428BCA",
   prim2: "#5BC0DE",
+  prim3: "#005e99",
   sec1: "#FFFFFF",
   sec2: "#D3D3D3",
   sec3: "#808080",

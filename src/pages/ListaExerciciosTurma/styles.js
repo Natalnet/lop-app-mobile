@@ -29,7 +29,7 @@ export const TextListTitle = styled.Text`
 export const BtnList = styled(RectButton)`
   background: ${colors.prim1};
   padding: 10px 15px;
-  border-radius: 4px;
+  border-radius: 20px;
   elevation: 4;
 `;
 export const TextBtnList = styled.Text`

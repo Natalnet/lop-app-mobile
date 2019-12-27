@@ -33,10 +33,29 @@ export const TextDescriptionQuestion = styled.Text`
 export const BtnQuestion = styled(RectButton)`
   background: ${colors.prim1};
   padding: 10px 15px;
-  border-radius: 4px;
+  border-radius: 20px;
   elevation: 4;
 `;
 export const TextBtnQuestion = styled.Text`
   color: ${colors.sec1};
   text-transform: uppercase;
+`;
+export const ViewGroupDetails = styled.View`
+  margin-top: 10px;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+`;
+export const ViewDetail = styled.View`
+  flex-direction: row;
+  margin-right: 15px;
+`;
+export const TextNumberDetail = styled.Text`
+  color: ${colors.prim3};
+  padding-left: 3px;
+`;
+
+export const LoadingContainer = styled.View`
+  justify-content: center;
+  align-items: center;
 `;
