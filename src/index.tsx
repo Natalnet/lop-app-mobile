@@ -1,8 +1,8 @@
 import React from 'react';
-import SolveProblem from './pages/SolveProblem';
+import Routes from './Routes';
 
 const App: React.FC = () => {
-  return <SolveProblem />;
+  return <Routes />;
 };
 
 export default App;
