@@ -1,0 +1,34 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+button {
+  height: 8vh;
+  background: #467fcf;
+  border: none;
+  color: #ffffff;
+}
+
+.ide-container {
+  display: flex;
+  background-color: #ccc;
+}
+.buttons-container {
+  width: 8vw;
+  overflow: scroll;
+  max-height: 92vh;
+}
+.buttons-container button {
+  width: 8vw;
+  background-color: #6c757d;
+  color: #fff;
+  height: 40px;
+  border-bottom: solid 1px #fff;
+  font-size: 16px;
+  font-weight: bold;
+}
+.separator {
+  height: 4px;
+}
