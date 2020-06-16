@@ -14,6 +14,7 @@ export const Container = styled(RectButton)`
   margin: 20px 10px;
   justify-content: center;
   align-items: center;
+  elevation: 5;
 `;
 export const Label = styled.Text`
   color: ${colors.sec1};

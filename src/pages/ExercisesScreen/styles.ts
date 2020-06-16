@@ -36,3 +36,48 @@ export const SearchButton = styled.TouchableOpacity`
   justify-content: center;
   align-items: center;
 `;
+
+export const ExerciseBox = styled.TouchableOpacity`
+  background: ${colors.prim2};
+  border-radius: 10px;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  margin-bottom: 15px;
+  elevation: 5;
+`;
+export const Exercise = styled.View`
+  flex: 1;
+`;
+export const ExerciseTitle = styled.Text`
+  color: ${colors.sec1};
+  padding-bottom: 10px;
+  letter-spacing: 0.5px;
+  font-weight: bold;
+  padding-right: 15px;
+`;
+export const ExeciseInfo = styled.View`
+  flex-direction: row;
+  justify-content: space-between;
+  padding-right: 15px;
+`;
+export const ExerciseCode = styled.Text`
+  color: ${colors.prim3};
+  font-weight: bold;
+  letter-spacing: 0.5px;
+  font-size: 12px;
+`;
+export const ExerciseDifficulty = styled.Text`
+  color: ${colors.sec1};
+  font-size: 12px;
+`;
+
+export const ExerciseIconGroup = styled.View`
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+`;
+export const ExerciseIconNumber = styled(ExerciseDifficulty)`
+  margin-left: 3px;
+`;

@@ -1,6 +1,7 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useContext } from 'react';
 import { View } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
+
+import { useAuth } from '../../hooks/Auth';
 
 import {
   Container,
@@ -19,7 +20,7 @@ import ButtonBorded from '../../components/ButtonBorded';
 import logo from '../../assets/logo.png';
 
 const SignIn: React.FC = () => {
-  const navigation = useNavigation();
+  const { signIn } = useAuth();
 
   const [isRecoverMode, setIsRecoverMode] = useState(false);
   const [email, setEmail] = useState('');
@@ -57,14 +58,13 @@ const SignIn: React.FC = () => {
     }
   }, [validateFields, cleanErrors]);
 
-  const handleSignIn = useCallback(() => {
-    // cleanErrors();
-    // if (!validateFields()) {
-    //   return;
-    // }
-
-    navigation.navigate('ExercisesScreen');
-  }, [validateFields, cleanErrors]);
+  const handleSignIn = useCallback(async () => {
+    cleanErrors();
+    if (validateFields()) {
+      return;
+    }
+    signIn({ email, password });
+  }, [validateFields, cleanErrors, email, password, signIn]);
 
   return (
     <Container>
@@ -84,8 +84,8 @@ const SignIn: React.FC = () => {
           keyboardType="email-address"
           autoCompleteType="email"
           autoCorrect={false}
+          autoCapitalize="none"
         />
-        {console.log(isRecoverMode)}
         {isRecoverMode ? (
           <>
             <View style={{ flexDirection: 'row' }}>

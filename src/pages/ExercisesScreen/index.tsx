@@ -1,5 +1,4 @@
 import React from 'react';
-import { Text } from 'react-native';
 import IconsMd from 'react-native-vector-icons/MaterialIcons';
 
 import {
@@ -9,6 +8,14 @@ import {
   SearchList,
   SearchListText,
   SearchButton,
+  ExerciseBox,
+  Exercise,
+  ExerciseTitle,
+  ExeciseInfo,
+  ExerciseCode,
+  ExerciseIconGroup,
+  ExerciseIconNumber,
+  ExerciseDifficulty,
 } from './styles';
 import colors from '../../styles/colors';
 // import { useNavigation } from '@react-navigation/native';
@@ -27,7 +34,30 @@ const ExercisesScreen: React.FC = () => {
           <IconsMd name="search" size={22} color={colors.sec1} />
         </SearchButton>
       </SearchBar>
-      <Text>Exercises</Text>
+      <ExerciseBox>
+        <Exercise>
+          <ExerciseTitle>
+            Elementos do vetor múltiplos de 3 e de 4 simultaneamente.
+          </ExerciseTitle>
+          <ExeciseInfo>
+            <ExerciseCode>3f1417b124 </ExerciseCode>
+            <ExerciseIconGroup>
+              <IconsMd name="visibility" size={14} color={colors.sec1} />
+              <ExerciseIconNumber>12</ExerciseIconNumber>
+            </ExerciseIconGroup>
+            <ExerciseIconGroup>
+              <IconsMd name="thumb-up" size={14} color={colors.sec1} />
+              <ExerciseIconNumber>2</ExerciseIconNumber>
+            </ExerciseIconGroup>
+            <ExerciseIconGroup>
+              <IconsMd name="send" size={14} color={colors.sec1} />
+              <ExerciseIconNumber>1</ExerciseIconNumber>
+            </ExerciseIconGroup>
+            <ExerciseDifficulty>Difícil</ExerciseDifficulty>
+          </ExeciseInfo>
+        </Exercise>
+        <IconsMd name="info" size={24} color={colors.sec1} />
+      </ExerciseBox>
     </Container>
   );
 };

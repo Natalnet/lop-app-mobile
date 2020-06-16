@@ -1,7 +1,7 @@
 export default {
   prim1: '#467FCF',
   prim2: '#01579B',
-  prim3: '#012745',
+  prim3: '#001F38',
   sec1: '#FFFFFF',
   danger1: '#C21401',
   success1: '#5EBA00',
