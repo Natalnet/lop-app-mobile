@@ -1,22 +1,80 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
+import { View } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 
-import { Container, Header, Logo, Form, Label } from './styles';
+import {
+  Container,
+  Header,
+  Logo,
+  Form,
+  Label,
+  ForgotPassword,
+  ForgotPasswordText,
+} from './styles';
+
 import InputWithIcon from '../../components/InputWithIcon';
+import ButtonFilled from '../../components/ButtonFilled';
+import ButtonBorded from '../../components/ButtonBorded';
+
 import logo from '../../assets/logo.png';
 
 const SignIn: React.FC = () => {
+  const navigation = useNavigation();
+
+  const [isRecoverMode, setIsRecoverMode] = useState(false);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
   const [errEmail, setErrEmail] = useState('');
   const [errPassword, setErrPassword] = useState('');
+
+  const cleanErrors = useCallback(() => {
+    setErrEmail('');
+    setErrPassword('');
+  }, []);
+
+  const validateFields = useCallback(() => {
+    let err = false;
+    const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
+    if (!re.test(String(email).toLowerCase())) {
+      setErrEmail('Email inválido');
+      err = true;
+    }
+    if (!isRecoverMode) {
+      if (password.length < 5) {
+        setErrPassword('Senha inválida inválido');
+        err = true;
+      }
+    }
+    return err;
+  }, [email, password, isRecoverMode]);
+
+  const handleRecoverEmail = useCallback(() => {
+    cleanErrors();
+    if (!validateFields()) {
+      return;
+    }
+  }, [validateFields, cleanErrors]);
+
+  const handleSignIn = useCallback(() => {
+    // cleanErrors();
+    // if (!validateFields()) {
+    //   return;
+    // }
+
+    navigation.navigate('ExercisesScreen');
+  }, [validateFields, cleanErrors]);
+
   return (
     <Container>
       <Header>
         <Logo source={logo} />
       </Header>
       <Form>
-        <Label>Faça login na sua conta</Label>
+        <Label>
+          {isRecoverMode ? 'Recupere sua senha' : 'Faça login na sua conta'}
+        </Label>
         <InputWithIcon
           iconName="mail"
           label="Digite o seu email"
@@ -27,14 +85,34 @@ const SignIn: React.FC = () => {
           autoCompleteType="email"
           autoCorrect={false}
         />
-        <InputWithIcon
-          iconName="lock"
-          label="Digite o seu email"
-          errMsg={errPassword}
-          value={password}
-          secureTextEntry
-          onChangeText={setPassword}
-        />
+        {console.log(isRecoverMode)}
+        {isRecoverMode ? (
+          <>
+            <View style={{ flexDirection: 'row' }}>
+              <ButtonBorded onPress={() => setIsRecoverMode(false)}>
+                VOLTAR
+              </ButtonBorded>
+              <ButtonFilled onPress={handleRecoverEmail}>
+                RECUPERAR SENHA
+              </ButtonFilled>
+            </View>
+          </>
+        ) : (
+          <>
+            <InputWithIcon
+              iconName="lock"
+              label="Digite o seu email"
+              errMsg={errPassword}
+              value={password}
+              secureTextEntry
+              onChangeText={setPassword}
+            />
+            <ForgotPassword onPress={() => setIsRecoverMode(true)}>
+              <ForgotPasswordText>Esqueci a senha</ForgotPasswordText>
+            </ForgotPassword>
+            <ButtonFilled onPress={handleSignIn}>ENTRAR</ButtonFilled>
+          </>
+        )}
       </Form>
     </Container>
   );
