@@ -1,6 +1,10 @@
 import styled from 'styled-components/native';
 import colors from '../../styles/colors';
 
+interface ColorProps {
+  color: string;
+}
+
 export const Container = styled.View`
   flex: 1;
   margin: 10px;
@@ -8,6 +12,7 @@ export const Container = styled.View`
 export const SearchBar = styled.View`
   flex-direction: row;
   height: 40px;
+  margin-bottom: 15px;
 `;
 export const SearchInput = styled.TextInput`
   border-width: 1px;
@@ -38,20 +43,23 @@ export const SearchButton = styled.TouchableOpacity`
 `;
 
 export const ExerciseBox = styled.TouchableOpacity`
-  background: ${colors.prim2};
+  background: ${colors.sec1};
+  border-width: 1px;
+  border-color: ${colors.prim2};
+  border-color: ${({ color }: ColorProps) => color};
   border-radius: 10px;
+  elevation: 5;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
   padding: 10px;
   margin-bottom: 15px;
-  elevation: 5;
 `;
 export const Exercise = styled.View`
   flex: 1;
 `;
 export const ExerciseTitle = styled.Text`
-  color: ${colors.sec1};
+  color: ${({ color }: ColorProps) => color};
   padding-bottom: 10px;
   letter-spacing: 0.5px;
   font-weight: bold;
@@ -63,13 +71,13 @@ export const ExeciseInfo = styled.View`
   padding-right: 15px;
 `;
 export const ExerciseCode = styled.Text`
-  color: ${colors.prim3};
+  color: ${({ color }: ColorProps) => color};
   font-weight: bold;
   letter-spacing: 0.5px;
   font-size: 12px;
 `;
 export const ExerciseDifficulty = styled.Text`
-  color: ${colors.sec1};
+  color: ${({ color }: ColorProps) => color};
   font-size: 12px;
 `;
 

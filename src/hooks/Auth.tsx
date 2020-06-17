@@ -58,6 +58,9 @@ const AuthProvider: React.FC = ({ children }) => {
       ]);
 
       token && user && setData({ token, user: JSON.parse(user) });
+      api.defaults.headers.authorization = `Bearer ${token}`;
+      api.defaults.headers.profile = user && JSON.parse(user).profile;
+      // api.defaults.headers.authorization = `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZmNjIyNWE3LWVlMjAtNGFhYi04ZTIyLTY5YWVlNDBhMmQ3MSIsInByb2ZpbGUiOiJBTFVOTyIsImVtYWlsIjoiZ2xhdWJlcmNhcnZAZ21haWwuY29tIiwiaWF0IjoxNTkyNDIzNDkyLCJleHAiOjE1OTMwMjgyOTJ9.zirvvqfoOAKIHi1npvxqRWs8W3q4OS8gU2pV-iLnQNI`;
     } catch (err) {
       signOut();
     }
@@ -93,6 +96,9 @@ const AuthProvider: React.FC = ({ children }) => {
             profile: user.profile,
           },
         });
+        api.defaults.headers.authorization = `Bearer ${token}`;
+        api.defaults.headers.profile = user.profile;
+        // api.defaults.headers.authorization = `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZmNjIyNWE3LWVlMjAtNGFhYi04ZTIyLTY5YWVlNDBhMmQ3MSIsInByb2ZpbGUiOiJBTFVOTyIsImVtYWlsIjoiZ2xhdWJlcmNhcnZAZ21haWwuY29tIiwiaWF0IjoxNTkyNDIzNDkyLCJleHAiOjE1OTMwMjgyOTJ9.zirvvqfoOAKIHi1npvxqRWs8W3q4OS8gU2pV-iLnQNI`;
       } else {
         Alert.alert(
           'Erro - Acesso negado',
@@ -101,7 +107,6 @@ const AuthProvider: React.FC = ({ children }) => {
         );
       }
     } catch (err) {
-      // TODO: Error Box
       if (!!err.response) {
         Alert.alert(
           'Erro - Credenciais inválidas',
