@@ -14,12 +14,12 @@ import colors from '../styles/colors';
 
 const Routes: React.FC = () => {
   const Stack = createStackNavigator();
-  const { name, signOut } = useAuth();
+  const { name, profile, signOut } = useAuth();
 
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        {!name ? (
+        {profile !== 'ALUNO' ? (
           <Stack.Screen
             name="SignIn"
             component={SignIn}

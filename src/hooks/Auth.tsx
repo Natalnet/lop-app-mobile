@@ -5,6 +5,7 @@ import React, {
   useEffect,
   useContext,
 } from 'react';
+import { Alert } from 'react-native';
 import AsyncStorage from '@react-native-community/async-storage';
 
 import api from '../services/api';
@@ -15,6 +16,7 @@ interface SignInCredentials {
 }
 interface AuthContextData {
   name: string;
+  profile: string;
   signIn(credentials: SignInCredentials): Promise<void>;
   signOut(): Promise<void>;
 }
@@ -37,51 +39,6 @@ const AuthProvider: React.FC = ({ children }) => {
     user: { name: '', email: '', profile: '' },
   });
 
-  const loadData = useCallback(async () => {
-    try {
-      const [token, user] = await Promise.all([
-        await AsyncStorage.getItem('@lop:token'),
-        await AsyncStorage.getItem('@lop:user'),
-      ]);
-
-      token && user && setData({ token, user: JSON.parse(user) });
-    } catch (err) {
-      // TODO: Error Box
-      console.log(err);
-    }
-  }, []);
-  useEffect(() => {
-    loadData();
-  }, [loadData]);
-
-  const signIn = useCallback(async ({ email, password }: SignInCredentials) => {
-    const response = await api.post('/auth/authenticate', { email, password });
-    const { token, user } = response.data;
-    try {
-      await Promise.all([
-        AsyncStorage.setItem('@lop:token', token),
-        AsyncStorage.setItem(
-          '@lop:user',
-          JSON.stringify({
-            name: user.name,
-            email: user.email,
-            profile: user.profile,
-          }),
-        ),
-      ]);
-      setData({
-        token,
-        user: {
-          name: user.name,
-          email: user.email,
-          profile: user.profile,
-        },
-      });
-    } catch (err) {
-      // TODO: Error Box
-      console.log(err);
-    }
-  }, []);
   const signOut = useCallback(async (): Promise<void> => {
     await Promise.all([
       AsyncStorage.removeItem('@lop:token'),
@@ -92,8 +49,83 @@ const AuthProvider: React.FC = ({ children }) => {
       user: { name: '', email: '', profile: '' },
     });
   }, []);
+
+  const loadData = useCallback(async () => {
+    try {
+      const [token, user] = await Promise.all([
+        await AsyncStorage.getItem('@lop:token'),
+        await AsyncStorage.getItem('@lop:user'),
+      ]);
+
+      token && user && setData({ token, user: JSON.parse(user) });
+    } catch (err) {
+      signOut();
+    }
+  }, [signOut]);
+  useEffect(() => {
+    loadData();
+  }, [loadData]);
+
+  const signIn = useCallback(async ({ email, password }: SignInCredentials) => {
+    try {
+      const response = await api.post('/auth/authenticate', {
+        email,
+        password,
+      });
+      const { token, user } = response.data;
+      if (user.profile === 'ALUNO') {
+        await Promise.all([
+          AsyncStorage.setItem('@lop:token', token),
+          AsyncStorage.setItem(
+            '@lop:user',
+            JSON.stringify({
+              name: user.name,
+              email: user.email,
+              profile: user.profile,
+            }),
+          ),
+        ]);
+        setData({
+          token,
+          user: {
+            name: user.name,
+            email: user.email,
+            profile: user.profile,
+          },
+        });
+      } else {
+        Alert.alert(
+          'Erro - Acesso negado',
+          'Você deve ter uma conta de aluno para logar na aplicação',
+          [{ text: 'OK' }],
+        );
+      }
+    } catch (err) {
+      // TODO: Error Box
+      if (!!err.response) {
+        Alert.alert(
+          'Erro - Credenciais inválidas',
+          'Digite novamente seu email e sua senha',
+          [{ text: 'OK' }],
+        );
+      } else {
+        Alert.alert(
+          'Erro - Problema de Conexão',
+          'Verifique sua conexão de internet ou tente novamente mais tarde',
+          [{ text: 'OK' }],
+        );
+      }
+    }
+  }, []);
   return (
-    <AuthContext.Provider value={{ name: data.user.name, signIn, signOut }}>
+    <AuthContext.Provider
+      value={{
+        name: data.user.name,
+        profile: data.user.profile,
+        signIn,
+        signOut,
+      }}
+    >
       {children}
     </AuthContext.Provider>
   );

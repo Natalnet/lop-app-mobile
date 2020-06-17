@@ -23,8 +23,8 @@ const SignIn: React.FC = () => {
   const { signIn } = useAuth();
 
   const [isRecoverMode, setIsRecoverMode] = useState(false);
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState('glaubercarv@gmail.com');
+  const [password, setPassword] = useState('Gla123123');
 
   const [errEmail, setErrEmail] = useState('');
   const [errPassword, setErrPassword] = useState('');
