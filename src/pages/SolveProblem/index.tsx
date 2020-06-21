@@ -1,4 +1,4 @@
-import React, { useCallback, useState, useRef } from 'react';
+import React, { useCallback, useState, useEffect, useRef } from 'react';
 import Modal from 'react-native-modal';
 import {
   Container,
@@ -6,19 +6,20 @@ import {
   ButtonsView,
   ModalSwitchButton,
   ModalSwitchText,
-  ModalContainer,
-  CloseButton,
-  CloseButtonText,
   IdeView,
-  CharsView,
-  CharBtn,
-  CharBtnText,
 } from './styles';
 
-const SolveProblem: React.FC = () => {
+import ModalQuestion from '../../components/ModalQuestion';
+
+const SolveProblem: React.FC = ({ route }) => {
+  const [question, setQuestion] = useState({});
   const [showModalQuestion, setShowModalQuestion] = useState(false);
   const [showModalAnswer, setShowModalAnswer] = useState(false);
   const webRef = useRef();
+
+  useEffect(() => {
+    setQuestion(route.params.question);
+  }, [route.params]);
 
   const onMessage = useCallback((event) => {
     console.log(event.nativeEvent.data);
@@ -35,14 +36,13 @@ const SolveProblem: React.FC = () => {
         animationOut="slideOutUp"
         animationOutTiming={300}
       >
-        <ModalContainer>
-          <CloseButton onPress={() => setShowModalQuestion(!showModalQuestion)}>
-            <CloseButtonText>X</CloseButtonText>
-          </CloseButton>
-        </ModalContainer>
+        <ModalQuestion
+          setIsModalVisible={setShowModalQuestion}
+          question={question}
+        />
       </Modal>
     ),
-    [showModalQuestion],
+    [showModalQuestion, question],
   );
   return (
     <Container>

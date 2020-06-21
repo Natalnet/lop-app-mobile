@@ -1,14 +1,15 @@
-import React, { useState, useCallback, useRef } from "react";
+import React, { useState, useCallback, useRef } from 'react';
 
-import AceEditor from "react-ace";
+import AceEditor from 'react-ace';
 
-import "./styles.css";
-import "ace-builds/src-noconflict/mode-javascript";
-import "ace-builds/src-noconflict/theme-monokai";
+import './styles.css';
+import 'ace-builds/src-noconflict/mode-javascript';
+import 'ace-builds/src-noconflict/mode-c_cpp';
+import 'ace-builds/src-noconflict/theme-monokai';
 
 const Ace = () => {
   const AceRef = useRef();
-  const [program, setProgram] = useState("");
+  const [program, setProgram] = useState('');
 
   const onSubmit = useCallback(() => {
     alert(program);
@@ -23,74 +24,74 @@ const Ace = () => {
     AceRef.current.editor.focus();
     AceRef.current.editor.session.insert(
       AceRef.current.editor.getCursorPosition(),
-      char
+      char,
     );
   }, []);
 
   return (
-    <div className='container'>
-      <div className='ide-container'>
+    <div className="container">
+      <div className="ide-container">
         <AceEditor
           ref={AceRef}
-          mode='javascript'
-          placeholder='Digite seu código'
-          theme='monokai'
+          mode="c_cpp"
+          placeholder="Digite seu código"
+          theme="monokai"
           focus={false}
           fontSize={12}
-          name='ide-ace'
+          name="ide-ace"
           onChange={setProgram}
           editorProps={{ $blockScrolling: true }}
           wrapEnabled={true}
           value={program}
           highlightActiveLine={true}
           tabSize={2}
-          style={{ maxWidth: "92vw", height: "92vh", userSelect: "none" }}
+          style={{ maxWidth: '92vw', height: '92vh', userSelect: 'none' }}
           setOptions={{
             useWorker: false,
           }}
         />
-        <div className='buttons-container'>
-          <button onClick={() => changeCursor("gotoleft")}>&larr;</button>
-          <button onClick={() => changeCursor("gotoright")}>&rarr;</button>
-          <button onClick={() => changeCursor("golineup")}>&uarr;</button>
-          <button onClick={() => changeCursor("golinedown")}>&darr;</button>
-          <button onClick={() => changeCursor("indent")}>tab</button>
-          <div className='separator'></div>
-          <button onClick={() => addChar(";")}>;</button>
-          <button onClick={() => addChar("(")}>(</button>
-          <button onClick={() => addChar(")")}>)</button>
-          <button onClick={() => addChar(",")}>,</button>
-          <button onClick={() => addChar(":")}>:</button>
-          <button onClick={() => addChar("{")}>{"{"}</button>
-          <button onClick={() => addChar("}")}>{"}"}</button>
-          <button onClick={() => addChar("[")}>{"["}</button>
-          <button onClick={() => addChar("]")}>{"]"}</button>
+        <div className="buttons-container">
+          <button onClick={() => changeCursor('gotoleft')}>&larr;</button>
+          <button onClick={() => changeCursor('gotoright')}>&rarr;</button>
+          <button onClick={() => changeCursor('golineup')}>&uarr;</button>
+          <button onClick={() => changeCursor('golinedown')}>&darr;</button>
+          <button onClick={() => changeCursor('indent')}>tab</button>
+          <div className="separator"></div>
+          <button onClick={() => addChar(';')}>;</button>
+          <button onClick={() => addChar('(')}>(</button>
+          <button onClick={() => addChar(')')}>)</button>
+          <button onClick={() => addChar(',')}>,</button>
+          <button onClick={() => addChar(':')}>:</button>
+          <button onClick={() => addChar('{')}>{'{'}</button>
+          <button onClick={() => addChar('}')}>{'}'}</button>
+          <button onClick={() => addChar('[')}>{'['}</button>
+          <button onClick={() => addChar(']')}>{']'}</button>
           <button onClick={() => addChar("'")}>'</button>
           <button onClick={() => addChar('"')}>"</button>
-          <button onClick={() => addChar("`")}>`</button>
-          <div className='separator'></div>
-          <button onClick={() => addChar("+")}>+</button>
-          <button onClick={() => addChar("-")}>-</button>
-          <button onClick={() => addChar("*")}>*</button>
-          <button onClick={() => addChar("/")}>/</button>
-          <button onClick={() => addChar("%")}>%</button>
-          <button onClick={() => addChar(".")}>.</button>
-          <div className='separator'></div>
-          <button onClick={() => addChar("!")}>!</button>
-          <button onClick={() => addChar("<")}>{"<"}</button>
-          <button onClick={() => addChar(">")}>{">"}</button>
-          <button onClick={() => addChar("&")}>{"&"}</button>
-          <button onClick={() => addChar("|")}>|</button>
-          <div className='separator'></div>
-          <button onClick={() => addChar("?")}>?</button>
-          <button onClick={() => addChar("@")}>@</button>
-          <button onClick={() => addChar("#")}>#</button>
-          <button onClick={() => addChar("~")}>~</button>
-          <button onClick={() => addChar("^")}>^</button>
+          <button onClick={() => addChar('`')}>`</button>
+          <div className="separator"></div>
+          <button onClick={() => addChar('+')}>+</button>
+          <button onClick={() => addChar('-')}>-</button>
+          <button onClick={() => addChar('*')}>*</button>
+          <button onClick={() => addChar('/')}>/</button>
+          <button onClick={() => addChar('%')}>%</button>
+          <button onClick={() => addChar('.')}>.</button>
+          <div className="separator"></div>
+          <button onClick={() => addChar('!')}>!</button>
+          <button onClick={() => addChar('<')}>{'<'}</button>
+          <button onClick={() => addChar('>')}>{'>'}</button>
+          <button onClick={() => addChar('&')}>{'&'}</button>
+          <button onClick={() => addChar('|')}>|</button>
+          <div className="separator"></div>
+          <button onClick={() => addChar('?')}>?</button>
+          <button onClick={() => addChar('@')}>@</button>
+          <button onClick={() => addChar('#')}>#</button>
+          <button onClick={() => addChar('~')}>~</button>
+          <button onClick={() => addChar('^')}>^</button>
         </div>
       </div>
-      <button type='submit' onClick={onSubmit}>
-        {" "}
+      <button type="submit" onClick={onSubmit}>
+        {' '}
         Submeter
       </button>
     </div>

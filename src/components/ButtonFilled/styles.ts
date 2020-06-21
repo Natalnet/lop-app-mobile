@@ -1,12 +1,13 @@
 import styled from 'styled-components/native';
-import { RectButton } from 'react-native-gesture-handler';
 import colors from '../../styles/colors';
 
 interface ContainerProps {
   color: string;
 }
 
-export const Container = styled(RectButton)`
+export const Container = styled.TouchableOpacity.attrs({
+  activeOpacity: 0.7,
+})`
   background: ${({ color }: ContainerProps) => color};
   padding: 20px 0;
   max-height: 40px;
@@ -15,6 +16,7 @@ export const Container = styled(RectButton)`
   justify-content: center;
   align-items: center;
   elevation: 5;
+  border-radius: 10px;
 `;
 export const Label = styled.Text`
   color: ${colors.sec1};

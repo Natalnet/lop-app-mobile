@@ -12,10 +12,10 @@ interface Request extends TouchableOpacityProps {
 const ButtonFilled: React.FC<Request> = ({
   children,
   color = colors.prim2,
-  ...rest
+  onPress,
 }: Request) => {
   return (
-    <Container color={color} {...rest}>
+    <Container color={color} onPress={onPress}>
       <Label>{children}</Label>
     </Container>
   );

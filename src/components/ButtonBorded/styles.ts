@@ -5,7 +5,9 @@ interface ColorProps {
   color: string;
 }
 
-export const Container = styled.TouchableOpacity`
+export const Container = styled.TouchableOpacity.attrs({
+  activeOpacity: 0.7,
+})`
   border-color: ${({ color }: ColorProps) => color};
   border-width: 1px;
   padding: 20px 0;
@@ -14,6 +16,7 @@ export const Container = styled.TouchableOpacity`
   margin: 20px 10px;
   justify-content: center;
   align-items: center;
+  border-radius: 10px;
 `;
 export const Label = styled.Text`
   color: ${({ color }: ColorProps) => color};

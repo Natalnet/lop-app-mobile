@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useContext } from 'react';
+import React, { useState, useCallback } from 'react';
 import { View } from 'react-native';
 
 import { useAuth } from '../../hooks/Auth';
