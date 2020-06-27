@@ -16,6 +16,7 @@ import {
 import InputWithIcon from '../../components/InputWithIcon';
 import ButtonFilled from '../../components/ButtonFilled';
 import ButtonBorded from '../../components/ButtonBorded';
+import InputPaper from '../../components/InputPaper';
 
 import logo from '../../assets/logo.png';
 
@@ -75,11 +76,10 @@ const SignIn: React.FC = () => {
         <Label>
           {isRecoverMode ? 'Recupere sua senha' : 'Faça login na sua conta'}
         </Label>
-        <InputWithIcon
-          iconName="mail"
-          label="Digite o seu email"
-          errMsg={errEmail}
+        <InputPaper
           value={email}
+          label="Email"
+          iconName="mail"
           onChangeText={setEmail}
           keyboardType="email-address"
           autoCompleteType="email"
@@ -99,14 +99,14 @@ const SignIn: React.FC = () => {
           </>
         ) : (
           <>
-            <InputWithIcon
+            <InputPaper
               iconName="lock"
-              label="Digite o seu email"
-              errMsg={errPassword}
+              label="Senha"
               value={password}
               secureTextEntry
               onChangeText={setPassword}
             />
+
             <ForgotPassword onPress={() => setIsRecoverMode(true)}>
               <ForgotPasswordText>Esqueci a senha</ForgotPasswordText>
             </ForgotPassword>
