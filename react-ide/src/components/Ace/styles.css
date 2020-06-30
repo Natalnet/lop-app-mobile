@@ -32,3 +32,6 @@ button {
 .separator {
   height: 4px;
 }
+#changeLanguage {
+  display: none;
+}

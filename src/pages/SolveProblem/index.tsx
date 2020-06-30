@@ -1,7 +1,11 @@
 import React, { useCallback, useState, useEffect, useRef } from 'react';
+import { Picker } from '@react-native-community/picker';
 import Modal from 'react-native-modal';
 import {
   Container,
+  Header,
+  ExitButton,
+  ExitButtonText,
   WebWindow,
   ButtonsView,
   ModalSwitchButton,
@@ -13,6 +17,7 @@ import ModalQuestion from '../../components/ModalQuestion';
 
 const SolveProblem: React.FC = ({ route }) => {
   const [question, setQuestion] = useState({});
+  const [language, setLanguage] = useState('js');
   const [showModalQuestion, setShowModalQuestion] = useState(false);
   const [showModalAnswer, setShowModalAnswer] = useState(false);
   const webRef = useRef();
@@ -23,6 +28,17 @@ const SolveProblem: React.FC = ({ route }) => {
 
   const onMessage = useCallback((event) => {
     console.log(event.nativeEvent.data);
+  }, []);
+
+  const changeLanguage = useCallback((item) => {
+    setLanguage(item);
+    console.log(webRef.current);
+    webRef.current.injectJavaScript(
+      `document.getElementById('changeLanguage').textContent = "${item}"`,
+    );
+    webRef.current.injectJavaScript(
+      `document.getElementById('changeLanguage').click()`,
+    );
   }, []);
 
   const renderModalQuestion = useCallback(
@@ -47,6 +63,19 @@ const SolveProblem: React.FC = ({ route }) => {
   return (
     <Container>
       {renderModalQuestion()}
+      <Header>
+        <Picker
+          selectedValue={language}
+          style={{ height: 50, width: 150 }}
+          onValueChange={(itemValue) => changeLanguage(itemValue)}
+        >
+          <Picker.Item label="JavaScript" value="js" />
+          <Picker.Item label="C++" value="cpp" />
+        </Picker>
+        <ExitButton>
+          <ExitButtonText>Sair</ExitButtonText>
+        </ExitButton>
+      </Header>
       <ButtonsView>
         <ModalSwitchButton
           onPress={() => setShowModalQuestion(!showModalQuestion)}
@@ -64,6 +93,7 @@ const SolveProblem: React.FC = ({ route }) => {
           onMessage={onMessage}
         />
       </IdeView>
+      {console.log(webRef.current)}
     </Container>
   );
 };

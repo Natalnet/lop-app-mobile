@@ -28,12 +28,21 @@ const Ace = () => {
     );
   }, []);
 
+  const changeLanguage = useCallback(() => {
+    const language = document.getElementById('changeLanguage').textContent;
+    if (language === 'cpp') {
+      AceRef.current.editor.session.setMode('ace/mode/c_cpp');
+    } else if (language === 'js') {
+      AceRef.current.editor.session.setMode('ace/mode/javascript');
+    }
+  }, []);
+
   return (
     <div className="container">
       <div className="ide-container">
         <AceEditor
           ref={AceRef}
-          mode="c_cpp"
+          mode="javascript"
           placeholder="Digite seu código"
           theme="monokai"
           focus={false}
@@ -93,6 +102,9 @@ const Ace = () => {
       <button type="submit" onClick={onSubmit}>
         {' '}
         Submeter
+      </button>
+      <button id="changeLanguage" onClick={changeLanguage}>
+        js
       </button>
     </div>
   );

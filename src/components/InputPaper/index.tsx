@@ -4,14 +4,21 @@ import { TextInputProps } from 'react-native';
 import IconMD from 'react-native-vector-icons/MaterialIcons';
 import colors from '../../styles/colors';
 
-import { Container, Input, IconContent } from './styles';
+import { Container, Input, IconContent, TextError, InputView } from './styles';
 
 interface Props extends TextInputProps {
   label: string;
   iconName: string;
+  errMsg: string;
 }
 
-const InputPaper: React.FC<Props> = ({ iconName, label, value, ...rest }) => {
+const InputPaper: React.FC<Props> = ({
+  iconName,
+  label,
+  errMsg,
+  value,
+  ...rest
+}) => {
   const [isDarken, setIsDarken] = useState(false);
   const endEditing = useCallback(() => {
     if (value?.length > 0) {
@@ -28,21 +35,26 @@ const InputPaper: React.FC<Props> = ({ iconName, label, value, ...rest }) => {
   }, [value]);
 
   return (
-    <Container>
-      <IconContent isDarken={isDarken}>
-        <IconMD name={iconName} size={22} color={colors.sec1} />
-      </IconContent>
-      <Input
-        onFocus={() => {
-          setIsDarken(true);
-        }}
-        onEndEditing={endEditing}
-        label={label}
-        value={value}
-        {...rest}
-        mode="outlined"
-      />
-    </Container>
+    <>
+      <Container>
+        <InputView>
+          <IconContent isDarken={isDarken}>
+            <IconMD name={iconName} size={22} color={colors.sec1} />
+          </IconContent>
+          <Input
+            onFocus={() => {
+              setIsDarken(true);
+            }}
+            onEndEditing={endEditing}
+            label={label}
+            value={value}
+            {...rest}
+            mode="outlined"
+          />
+        </InputView>
+        {!!errMsg && <TextError>{errMsg}</TextError>}
+      </Container>
+    </>
   );
 };
 

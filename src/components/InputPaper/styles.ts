@@ -7,7 +7,9 @@ interface IconContentProps {
 }
 
 export const Container = styled.View`
-  margin-bottom: 10px;
+  padding-bottom: 20px;
+`;
+export const InputView = styled.View`
   flex-direction: row;
   justify-content: center;
 `;
@@ -36,4 +38,10 @@ export const IconContent = styled.View`
   right: -3px;
   z-index: 1;
   width: 40px;
+`;
+
+export const TextError = styled.Text`
+  margin: 5px;
+  font-size: 12px;
+  color: ${colors.danger1};
 `;

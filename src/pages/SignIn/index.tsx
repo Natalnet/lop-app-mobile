@@ -79,6 +79,7 @@ const SignIn: React.FC = () => {
         <InputPaper
           value={email}
           label="Email"
+          errMsg={errEmail}
           iconName="mail"
           onChangeText={setEmail}
           keyboardType="email-address"
@@ -102,6 +103,7 @@ const SignIn: React.FC = () => {
             <InputPaper
               iconName="lock"
               label="Senha"
+              errMsg={errPassword}
               value={password}
               secureTextEntry
               onChangeText={setPassword}
